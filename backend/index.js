@@ -4,6 +4,7 @@ const PORT = 3000;
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
 
@@ -68,6 +69,51 @@ app.post("/register", (req, res) => {
     .catch((e) => {
       res.status(500).send({
         message: "password was not hashed successfully",
+        e,
+      });
+    });
+});
+
+app.post("/login", (req, res) => {
+  User.findOne({ email: req.body.email })
+    .then((user) => {
+      bcrypt
+        .compare(req.body.password, user.password)
+        .then((passwordCheck) => {
+          if (!passwordCheck) {
+            return res.status(401).status({
+              message: "Password does not match",
+              error,
+            });
+          }
+
+          // creating a jwt token
+
+          const token = jwt.sign(
+            {
+              userId: user._id,
+              userEmail: user.email,
+            },
+            "RANDOM-TOKEN",
+            { expiresIn: "24h" }
+          );
+
+          res.status(200).send({
+            message: "Login Successful",
+            email: user.email,
+            token,
+          });
+        })
+        .catch((error) => {
+          res.status(400).send({
+            message: "Incorrect Password ",
+            error,
+          });
+        });
+    })
+    .catch((e) => {
+      res.status(404).send({
+        message: "Email not found",
         e,
       });
     });
