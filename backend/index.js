@@ -25,6 +25,20 @@ const dbConnect = async () => {
 
 dbConnect();
 
+// CORS error to prevent hydration errors in the frontend
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Header",
+    "Origin, X-request-With, Content, Accept, Content-Type,Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET , POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
 const UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -117,6 +131,30 @@ app.post("/login", (req, res) => {
         e,
       });
     });
+});
+
+// auth
+
+const auth = async (req, res, next) => {
+  try {
+    const token = await req.headers.authorization.split(" ")[1];
+    const decodedToken = await jwt.verify(token, "RANDOM-TOKEN");
+    const user = await decodedToken;
+    req.user = user;
+    next();
+  } catch (error) {
+    res.status(401).json({
+      error: new Error("Invalid request!"),
+    });
+  }
+};
+
+app.get("/free-endpoint", (req, res) => {
+  res.json({ message: "This is free to access endpoint" });
+});
+
+app.get("/auth-endpoint", auth, (req, res) => {
+  res.json({ message: "You are authorized to access this endpoint" });
 });
 
 app.listen(PORT, (err) => {
