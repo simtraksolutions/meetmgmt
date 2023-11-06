@@ -23,8 +23,6 @@ const dbConnect = async () => {
     });
 };
 
-dbConnect();
-
 // CORS error to prevent hydration errors in the frontend
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -157,9 +155,11 @@ app.get("/auth-endpoint", auth, (req, res) => {
   res.json({ message: "You are authorized to access this endpoint" });
 });
 
-app.listen(PORT, (err) => {
-  if (err) {
-    return console.error(err);
-  }
-  console.log(`The backend is running on ${PORT}`);
+dbConnect().then(() => {
+  app.listen(PORT, (err) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(`The backend is running on ${PORT}`);
+  });
 });
