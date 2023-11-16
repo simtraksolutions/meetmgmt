@@ -79,7 +79,10 @@ const Signup = () => {
           />
           <br />
           <br />
-          <button className="w-[200px] h-[50px] border hover:bg-teal-900">
+          <button
+            className="w-[200px] h-[50px] border hover:bg-teal-900"
+            type="submit"
+          >
             Sign Up
           </button>
         </form>

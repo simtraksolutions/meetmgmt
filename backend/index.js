@@ -21,10 +21,10 @@ mongoose
     app.listen(3004, () => {
       console.log("server is connected on port 3001");
     });
-  })
-  .catch((error) => {
-    console.log("Unable to connect to server or mongoDB");
   });
+// .catch((error) => {
+//   console.log("Unable to connect to server or mongoDB");
+// });
 // middleware
 app.use(bodyParser.json());
 app.use(cors());
