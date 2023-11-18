@@ -83,7 +83,7 @@ const Login = () => {
             <div className="text-xl self-start font-semibold ">Login as:</div>
 
             {/* username  input*/}
-            <div className="flex flex-col mt-5 w-full">
+            <div className="flex flex-col mt-5 w-full font-semibold">
               <label>Email</label>
               <input
                 className="w-[97%] h-[40px] bg-white border border-[#7D8893] p-2 mt-1"
@@ -94,10 +94,9 @@ const Login = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            <br />
-            <br />
+
             {/* password */}
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full mt-8 font-semibold">
               <label>Password</label>
               <input
                 className="w-[97%] h-[40px] bg-white border border-[#7D8893] p-2 mt-1"
@@ -112,7 +111,7 @@ const Login = () => {
             <br />
             {/* Login button */}
             <button
-              className="w-[97%] h-[40px] bg-#205bd4 text-white  bg-[#205BD4]"
+              className="w-[97%] h-[40px] bg-#205bd4 text-white  bg-[#205BD4] font-semibold"
               type="submit"
               style={{ borderRadius: "6px" }}
             >
@@ -122,7 +121,9 @@ const Login = () => {
 
             {/* Forget password text */}
             <Link>
-              <p className="text-sm mt-2">Forgot your password?</p>
+              <p className="text-sm mt-2 font-semibold">
+                Forgot your password?
+              </p>
             </Link>
 
             {/* Horizontal line with "OR" text */}
@@ -135,9 +136,9 @@ const Login = () => {
             </div>
 
             {/* Register button */}
-            <Link to="/register" className="w-[97%] mt-4">
+            <Link to="/signup" className="w-[97%] mt-4">
               <button
-                className="w-full h-[40px] bg-[#205bd4] text-white"
+                className="w-full h-[40px] bg-[#205bd4] text-white font-semibold"
                 type="submit"
                 style={{ borderRadius: "6px" }}
               >
