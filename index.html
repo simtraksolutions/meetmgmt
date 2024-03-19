@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Meeting Manager</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Meetings</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="Search">
+                <input class="srch" type="search" name="" placeholder="Type to Search">
+                <button class="btn">Search</button>
+            </div>
+        </div>
+        <div class="content">
+            <p id="welcome-message">Welcome to your very own <br>meeting manager....</p>
+        </div>
+        <div class="form">
+            <h2>Login Here</h2>
+            <input type="email" name="email" placeholder="Enter Email Here">
+            <input type="password" name="password" placeholder="Enter Password Here">
+            <button class="btn" onclick="login()">Login</button>
+            <p class="link" style="color: white;">Don't have an account? <a href="#" onclick="openPopup()" >Sign Up</a></p>
+        </div>
+
+        <div id="signup-popup" class="popup">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Sign Up Here</h2><br>
+            <input type="text" id="signup-name" placeholder="Enter Your Name"><br><br>
+            <input type="email" id="signup-email" placeholder="Enter Email for Sign Up"><br><br>
+            <input type="password" id="signup-password" placeholder="Create Password"><br>
+            <button class="btn" onclick="signup()">Sign Up</button>
+        </div>
+    </div>
+    <script>
+        function openPopup() {
+            document.getElementById("signup-popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("signup-popup").style.display = "none";
+        }
+
+        function signup() {
+            var name = document.getElementById("signup-name").value;
+            var email = document.getElementById("signup-email").value;
+            var password = document.getElementById("signup-password").value;
+
+            if (!name || !email || !password) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            var users = JSON.parse(localStorage.getItem("users")) || [];
+
+            if (users.some(user => user.email === email)) {
+                alert("Email is already registered. Please use a different email.");
+                return;
+            }
+
+            users.push({ name: name, email: email, password: password });
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            closePopup();
+        }
+
+        function login() {
+            var email = document.querySelector("input[name=email]").value;
+            var password = document.querySelector("input[name=password]").value;
+
+            var users = JSON.parse(localStorage.getItem("users")) || [];
+
+            var user = users.find(u => u.email === email);
+
+            if (user && user.password === password) {
+
+                localStorage.setItem("currentUserName", user.name);
+
+
+                document.getElementById("welcome-message").innerText = `Welcome, ${user.name}!`;
+
+ 
+                window.location.href = "loggedinpg.html";
+
+                alert("Login successful!");
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+        function displayUserInformation() {
+            var userList = document.getElementById("user-list");
+
+            // Clear previous content
+            userList.innerHTML = "";
+
+            // Populate the user list
+            users.forEach(function(user) {
+                var listItem = document.createElement("li");
+                listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                userList.appendChild(listItem);
+            });
+        }
+        displayUserInformation();
+    </script>
+</body>
+</html>

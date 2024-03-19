@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@700&family=Poppins:wght@300;400;500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width:100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url(images/pexels-craig-dennis-205421.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+
+}
+
+.icon{
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo{
+    color:#fff;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+}
+
+.menu{
+    width: 400px;
+    float: right;
+    height: 72px;
+
+}
+
+ul{
+    float: right;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 14px;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: yellow
+}
+.content {
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: white;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    padding-top: 200px;
+    transform: rotate(-35deg) translate(200px, -280px); 
+}
+
+.content a{
+    transition: .3s ease;
+}

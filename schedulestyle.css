@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('./images/pexels-eva-bronzini-7605641.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    text-align: left;
+}
+
+.container form {
+    max-width: 300px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the form within the container */
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+button {
+    background-color: green;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu{
+    width: 400px;
+    float: left;
+    height: 72px;
+
+}
+
+ul{
+    float: right;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 12px;
+    font-size: 14px;
+    transform: translate(620px, -265px);
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover{
+    color: yellow
+}

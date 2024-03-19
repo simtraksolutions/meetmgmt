@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Meeting</title>
+    <link rel="stylesheet" href="schedulestyle.css">
+</head>
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="loggedinpg.html">Home</a></li>
+            <li><a href="#">Schedule</a></li>
+            <li><a href="#">Attend</a></li>
+            <li><a href="delete.html">Cancel</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </div>
+<div class="container">
+    <h2>Schedule a Meeting</h2>
+    <form>
+        <label for="meetingTitle">Meeting Title:</label>
+        <input type="text" id="meetingTitle" name="meetingTitle" required>
+
+        <label for="meetingDate">Meeting Date:</label>
+        <input type="date" id="meetingDate" name="meetingDate" required>
+
+        <label for="meetingTime">Meeting Time:</label>
+        <input type="time" id="meetingTime" name="meetingTime" required>
+
+        <label for="meetingDuration">Meeting Duration (minutes):</label>
+        <input type="number" id="meetingDuration" name="meetingDuration" required>
+
+        <button type="submit">Schedule Meeting</button>
+    </form>
+</div>
+<script>
+    function logout() {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

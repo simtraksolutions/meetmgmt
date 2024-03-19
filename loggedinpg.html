@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            background-image: none; 
+        }
+    </style>
+    <link rel="stylesheet" href="loggedinpgstyle.css">
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Meeting Manager</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="#">Attend</a></li>
+                    <li><a href="delete.html">Cancel</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <p id="welcome-message">➡️Welcome Onboard...<br> you may now access all<br> the tools and begin your work!<br>.<br>.<br>.<br>➡️you may logout once you're done!</p>
+            </div>
+            <div>
+                <iframe src="https://us04web.zoom.us/j/9849000170?pwd=anTIuqnWcdTtOrAFB9Us91Iy2QlSSo.1" frameborder="0" width="100%" height="300px"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            window.location.href = "index.html";
+        }
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Display user information
+        function displayUserInformation() {
+            var userList = document.getElementById("user-list");
+
+            // Clear previous content
+            userList.innerHTML = "";
+
+            // Populate the user list
+            users.forEach(function(user) {
+                var listItem = document.createElement("li");
+                listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        // Call the function to display user information
+        displayUserInformation();
+
+        function logout() {
+            window.location.href = "index.html";
+        }
+        var users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Display user information
+        function displayUserInformation() {
+            var userList = document.getElementById("user-list");
+
+            // Clear previous content
+            userList.innerHTML = "";
+
+            // Populate the user list
+            users.forEach(function(user) {
+                var listItem = document.createElement("li");
+                listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                userList.appendChild(listItem);
+            });
+        }
+
+        // Call the function to display user information
+        displayUserInformation();
+
+        function logout() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
+
